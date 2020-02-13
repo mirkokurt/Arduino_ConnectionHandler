@@ -113,12 +113,12 @@ NetworkConnectionState WiFiConnectionHandler::update_handleConnected()
   {
     Debug.print(DBG_VERBOSE, "WiFi.status(): %d", WiFi.status());
     Debug.print(DBG_ERROR, "Connection to \"%s\" lost.", _ssid);
-  
+
     if (_keep_alive)
     {
       Debug.print(DBG_ERROR, "Attempting reconnection");
     }
-  
+
     return NetworkConnectionState::DISCONNECTED;
   }
   return NetworkConnectionState::CONNECTED;

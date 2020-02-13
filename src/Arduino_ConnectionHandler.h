@@ -29,6 +29,18 @@
   #define WIFI_FIRMWARE_VERSION_REQUIRED WIFI_FIRMWARE_REQUIRED
 #endif
 
+#ifdef ARDUINO_NINA_ESP32
+  #include <WiFiClient.h>
+  #include <WiFi.h>
+  #include <WiFiUdp.h>
+
+  #define BOARD_HAS_WIFI
+  #define NETWORK_HARDWARE_ERROR WL_NO_SHIELD
+  #define NETWORK_IDLE_STATUS WL_IDLE_STATUS
+  #define NETWORK_CONNECTED WL_CONNECTED
+  #define WIFI_FIRMWARE_VERSION_REQUIRED 0
+#endif
+
 #if defined(ARDUINO_SAMD_MKRWIFI1010) || defined(ARDUINO_SAMD_NANO_33_IOT)
   #include <WiFiNINA.h>
   #include <WiFiUdp.h>
