@@ -100,13 +100,6 @@ NetworkConnectionState WiFiConnectionHandler::update_handleInit() {
     return NetworkConnectionState::ERROR;
   }
 
-  Debug.print(DBG_ERROR, "Current WiFi Firmware: %s", WiFi.firmwareVersion());
-
-  if (WiFi.firmwareVersion() < WIFI_FIRMWARE_VERSION_REQUIRED) {
-    Debug.print(DBG_ERROR, "Latest WiFi Firmware: %s", WIFI_FIRMWARE_VERSION_REQUIRED);
-    Debug.print(DBG_ERROR, "Please update to the latest version for best performance.");
-    delay(5000);
-  }
 #else
   Debug.print(DBG_ERROR, "WiFi status ESP: %d", WiFi.status());
   WiFi.disconnect();
@@ -178,9 +171,6 @@ NetworkConnectionState WiFiConnectionHandler::update_handleDisconnecting() {
 }
 
 NetworkConnectionState WiFiConnectionHandler::update_handleDisconnected() {
-#ifndef BOARD_ESP8266
-  WiFi.end();
-#endif /* ifndef BOARD_ESP8266 */
   if (keepAlive) {
     connectionTickTimeInterval = CHECK_INTERVAL_INIT;
     return NetworkConnectionState::INIT;
