@@ -33,7 +33,8 @@
   #include <WiFiClient.h>
   #include <WiFi.h>
   #include <WiFiUdp.h>
-
+  
+  #define BOARD_HAS_ESP
   #define BOARD_HAS_WIFI
   #define NETWORK_HARDWARE_ERROR WL_NO_SHIELD
   #define NETWORK_IDLE_STATUS WL_IDLE_STATUS
@@ -107,7 +108,7 @@
 #if defined(BOARD_ESP8266)
   #include <ESP8266WiFi.h>
   #include <WiFiUdp.h>
-
+  #define BOARD_HAS_ESP
   #define BOARD_HAS_WIFI
   #define NETWORK_HARDWARE_ERROR WL_NO_SHIELD
   #define NETWORK_IDLE_STATUS WL_IDLE_STATUS

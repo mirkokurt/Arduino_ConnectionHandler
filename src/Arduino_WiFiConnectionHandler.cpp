@@ -91,7 +91,7 @@ void WiFiConnectionHandler::disconnect() {
 NetworkConnectionState WiFiConnectionHandler::update_handleInit() {
   Debug.print(DBG_VERBOSE, "::INIT");
 
-#ifndef BOARD_ESP8266
+#ifndef BOARD_HAS_ESP 
   Debug.print(DBG_INFO, "WiFi.status(): %d", WiFi.status());
   if (WiFi.status() == NETWORK_HARDWARE_ERROR) {
     execNetworkEventCallback(_on_error_event_callback, 0);
@@ -115,7 +115,7 @@ NetworkConnectionState WiFiConnectionHandler::update_handleInit() {
 NetworkConnectionState WiFiConnectionHandler::update_handleConnecting() {
   Debug.print(DBG_VERBOSE, "::CONNECTING");
   
-#ifndef BOARD_ESP8266
+#ifndef BOARD_HAS_ESP 
   if (WiFi.status() != WL_CONNECTED) {
     WiFi.begin(ssid, pass);
   }
