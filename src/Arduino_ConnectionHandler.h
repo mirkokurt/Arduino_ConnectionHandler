@@ -100,7 +100,7 @@
     || defined(AMPERKA_WIFI_SLOT)        \
     || defined(ESP8266_WIO_LINK)         \
     || defined(ESP8266_ESPECTRO_CORE)
-  
+
   #define BOARD_ESP8266
 #endif
 
@@ -207,8 +207,8 @@ class ConnectionHandler {
 
   private:
 
-    unsigned long _lastConnectionTickTime;
     NetworkConnectionState _current_net_connection_state;
+    unsigned long _lastConnectionTickTime;
     OnNetworkEventCallback  _on_connect_event_callback = NULL,
                             _on_disconnect_event_callback = NULL,
                             _on_error_event_callback = NULL;

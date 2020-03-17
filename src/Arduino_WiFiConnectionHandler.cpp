@@ -62,7 +62,7 @@ NetworkConnectionState WiFiConnectionHandler::update_handleInit()
     Debug.print(DBG_ERROR, "Then reset and retry.");
     return NetworkConnectionState::ERROR;
   }
-
+  #ifndef ARDUINO_NINA_ESP32
   Debug.print(DBG_ERROR, "Current WiFi Firmware: %s", WiFi.firmwareVersion());
 
   if (WiFi.firmwareVersion() < WIFI_FIRMWARE_VERSION_REQUIRED)
@@ -71,6 +71,7 @@ NetworkConnectionState WiFiConnectionHandler::update_handleInit()
     Debug.print(DBG_ERROR, "Please update to the latest version for best performance.");
     delay(5000);
   }
+  #endif
 #else
   Debug.print(DBG_ERROR, "WiFi status ESP: %d", WiFi.status());
   WiFi.disconnect();
