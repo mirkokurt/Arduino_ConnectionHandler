@@ -89,6 +89,9 @@ NetworkConnectionState WiFiConnectionHandler::update_handleConnecting()
   if (WiFi.status() != WL_CONNECTED)
   {
     WiFi.begin(_ssid, _pass);
+    #ifdef ARDUINO_NINA_ESP32
+    delay(2000);
+    #endif
   }
 #endif /* ifndef BOARD_ESP8266 */
 
